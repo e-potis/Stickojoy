@@ -6,6 +6,14 @@ from odrive.enums import *
 import time
 import math
 from odrive.utils import *
+from selfupdate import update
+
+print ("check for updates")
+update()
+    
+
+
+
 print("finding an odrive...")
 my_drive = odrive.find_any()
 print (my_drive)
@@ -13,6 +21,7 @@ print (my_drive)
 origin_theta =0
 origin_fi=0
 border_delta=10
+
 
 # The callback functions
 def button1():
