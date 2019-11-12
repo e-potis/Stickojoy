@@ -16,8 +16,8 @@ from odrive.utils import *
 
 
 print("finding an odrive...")
-my_drive = odrive.find_any()
-print (my_drive)
+#my_drive = odrive.find_any()
+#print (my_drive)
 
 origin_theta =0
 origin_fi=0
@@ -79,25 +79,26 @@ sg.ChangeLookAndFeel('Dark')
 
 layout = [      
     
-    [sg.Text('Stick of Joy', size=(30, 1), justification='center', font=("Helvetica", 25), relief=sg.RELIEF_RIDGE)],
-    [sg.Frame('Axis 0',[ 
-     [sg.Slider(range=(0, 100), orientation='h', size=(50, 10), default_value=0,key='axis0velgain', enable_events=True)],      #, enable_events=True
-     [sg.Slider(range=(0, 100), orientation='h', size=(50, 10), default_value=0, key='axis0posgain', enable_events=True)],      
-     [sg.Slider(range=(0, 100), orientation='h', size=(50, 20), default_value=0,key='axis0intgain', enable_events=True)],      
-     ])],
-    [sg.Frame('Axis 1',[      
-     [sg.Slider(range=(0, 100), orientation='h', size=(50, 10), default_value=0,key='axis1velgain', enable_events=True)],      #, enable_events=True
-     [sg.Slider(range=(0, 100), orientation='h', size=(50, 10), default_value=0, key='axis1posgain', enable_events=True)],      
-     [sg.Slider(range=(0, 100), orientation='h', size=(50, 10), default_value=0,key='axis1intgain', enable_events=True)],      
-     ])],
+
     [sg.Text (text = 'theta: ',size = (5,1)),sg.Text(text='',size=(20,1), key='theta'), sg.Text (text = 'fi: ',size = (5,1)), sg.Text(text='',size=(20,1), key='fi')],
-    [sg.Graph(canvas_size=(250, 250), graph_bottom_left=(-1000,-1000), graph_top_right=(1000,1000), background_color='white', key='graph', tooltip='This is a cool graph!')],
-    [sg.Radio('Back Driven', group_id ='mode', key='backdriven', size=(12, 1), enable_events=True,default=True)],      
-    [sg.Radio('Hold Current', group_id ='mode',key='holdcurrent', size=(12, 1), enable_events=True)],      
-    [sg.Radio('Square Walls', group_id ='mode', key = 'square', size=(12, 1), enable_events=True)],      
-    [sg.Radio('Stick Drive', group_id ='mode', key= 'stick', size=(12, 1), enable_events=True)],  
-    [sg.Button('Calibrate'),sg.Button('ERROR')]
-]      
+    [sg.Graph(canvas_size=(250, 250), graph_bottom_left=(-1000,-1000), graph_top_right=(1000,1000), background_color='white', key='graph', tooltip='This is a cool graph!'),
+
+    sg.Frame('PID VALUES',[ 
+        [sg.Slider(range=(0, 100), orientation='h', size=(20, 10), default_value=0,key='axis0velgain', enable_events=True)],      #, enable_events=True
+        [sg.Slider(range=(0, 100), orientation='h', size=(20, 10), default_value=0, key='axis0posgain', enable_events=True)],      
+        [sg.Slider(range=(0, 100), orientation='h', size=(20, 10), default_value=0,key='axis0intgain', enable_events=True)],          
+        [sg.Slider(range=(0, 100), orientation='h', size=(20, 10), default_value=0,key='axis1velgain', enable_events=True)],      #, enable_events=True
+        [sg.Slider(range=(0, 100), orientation='h', size=(20, 10), default_value=0, key='axis1posgain', enable_events=True)],      
+        [sg.Slider(range=(0, 100), orientation='h', size=(20, 10), default_value=0,key='axis1intgain', enable_events=True)],      
+    ]),
+    sg.Frame('MODES',[ 
+        [sg.Radio('Back Driven', group_id ='mode', key='backdriven', size=(12, 1), enable_events=True,default=True)],      
+        [sg.Radio('Hold Current', group_id ='mode',key='holdcurrent', size=(12, 1), enable_events=True)],      
+        [sg.Radio('Square Walls', group_id ='mode', key = 'square', size=(12, 1), enable_events=True)],      
+        [sg.Radio('Stick Drive', group_id ='mode', key= 'stick', size=(12, 1), enable_events=True)],  
+        [sg.Button('Calibrate'),sg.Button('ERROR')]
+    ])
+]]         
 
 
 window = sg.Window('Stick of Joy', layout, default_element_size=(20, 1), grab_anywhere=False)
