@@ -6,10 +6,7 @@ from odrive.enums import *
 import time
 import math
 from odrive.utils import *
-#from selfupdate import update
 
-#print ("check for updates")
-#update()
 #os.system("echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="0d[0-9][0-9]", MODE="0666"' | sudo tee /etc/udev/rules.d/50-odrive.rules")
 #os.system("sudo udevadm control --reload-rules")
 #os.system("sudo udevadm trigger") # until you reboot you may need to do this everytime you reset the ODrive
@@ -101,8 +98,9 @@ layout = [
 ]]         
 
 
-window = sg.Window('Stick of Joy', layout, default_element_size=(20, 1), grab_anywhere=False).Finalize()
-window.Maximize()
+window = sg.Window('Stick of Joy', layout, location = (0,0), size=(800, 480), grab_anywhere=False).Finalize()
+#window.Maximize()#keep_on_top=True
+
 
 # Find a connected ODrive (this will block until you connect one)
 
