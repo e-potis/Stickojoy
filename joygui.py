@@ -101,8 +101,8 @@ layout = [
 ]]         
 
 
-window = sg.Window('Stick of Joy', layout, default_element_size=(20, 1), grab_anywhere=False)
-
+window = sg.Window('Stick of Joy', layout, default_element_size=(20, 1), grab_anywhere=False).Finalize()
+window.Maximize()
 
 # Find a connected ODrive (this will block until you connect one)
 
