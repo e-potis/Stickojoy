@@ -16,8 +16,8 @@ from odrive.utils import *
 
 
 print("finding an odrive...")
-#my_drive = odrive.find_any()
-#print (my_drive)
+my_drive = odrive.find_any()
+print (my_drive)
 
 origin_theta =0
 origin_fi=0
